@@ -43,19 +43,30 @@ public class WebSecurityConfig {
 		http.authenticationProvider(authenticationProvider());
 
 		http.authorizeHttpRequests(authorize -> authorize
-				.requestMatchers("/users/**", "/settings/**", "/countries/**", "/states/**").hasAnyAuthority("Admin")
+				.requestMatchers("/states/list_by_country/**").hasAnyAuthority("Admin", "Salesperson")
+				.requestMatchers("/users/**", "/settings/**", "/countries/**", "/states/**").hasAuthority("Admin")
 				.requestMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Editor")
+				
 				.requestMatchers("/products/new", "/products/delete/**").hasAnyAuthority("Admin", "Editor")
-
+				
 				.requestMatchers("/products/edit/**", "/products/save", "/products/check_unique")
-				.hasAnyAuthority("Admin", "Editor", "Salesperson")
-
+					.hasAnyAuthority("Admin", "Editor", "Salesperson")
+					
 				.requestMatchers("/products", "/products/", "/products/detail/**", "/products/page/**")
-				.hasAnyAuthority("Admin", "Editor", "Salesperson", "Shipper")
-
+					.hasAnyAuthority("Admin", "Editor", "Salesperson", "Shipper")
+					
 				.requestMatchers("/products/**").hasAnyAuthority("Admin", "Editor")
-				.requestMatchers("/customers/**").hasAnyAuthority("Admin", "Salesperson")
-				.anyRequest().permitAll())
+				
+				.requestMatchers("/orders", "/orders/", "/orders/page/**", "/orders/detail/**").hasAnyAuthority("Admin", "Salesperson", "Shipper")
+				
+				.requestMatchers("/products/detail/**", "/customers/detail/**").hasAnyAuthority("Admin", "Editor", "Salesperson", "Assistant")
+
+				.requestMatchers("/customers/**", "/orders/**", "/get_shipping_cost", "/reports/**").hasAnyAuthority("Admin", "Salesperson")
+				
+				.requestMatchers("/orders_shipper/update/**").hasAuthority("Shipper")
+				
+				.requestMatchers("/reviews/**").hasAnyAuthority("Admin", "Assistant")
+				.anyRequest().authenticated())
 		
 				.formLogin(form -> form.loginPage("/login").usernameParameter("email").defaultSuccessUrl("/", true)
 						.permitAll())
