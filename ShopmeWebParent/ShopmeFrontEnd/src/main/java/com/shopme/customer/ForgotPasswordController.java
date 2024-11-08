@@ -2,7 +2,9 @@ package com.shopme.customer;
 
 import java.io.UnsupportedEncodingException;
 
-
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -17,10 +19,6 @@ import com.shopme.common.entity.Customer;
 import com.shopme.common.exception.CustomerNotFoundException;
 import com.shopme.setting.EmailSettingBag;
 import com.shopme.setting.SettingService;
-
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class ForgotPasswordController {

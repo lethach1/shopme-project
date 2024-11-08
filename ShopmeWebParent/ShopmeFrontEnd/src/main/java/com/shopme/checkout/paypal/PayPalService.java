@@ -61,26 +61,18 @@ public class PayPalService {
 	}
 
 	private void throwExceptionForNonOKResponse(HttpStatusCode statusCode) throws PayPalApiException {
-		String message = null;
-		
-		  switch (statusCode.value()) { // Sử dụng statusCode.value() để lấy mã trạng thái
-	        case 404: // NOT FOUND
-	            message = "Order ID not found";
-	            break;
-	            
-	        case 400: // BAD REQUEST
-	            message = "Bad Request to PayPal Checkout API";
-	            break;
-	            
-	        case 500: // INTERNAL SERVER ERROR
-	            message = "PayPal server error";
-	            break;
-	            
-	        default:
-	            message = "PayPal returned non-OK status code: " + statusCode.value(); // Thêm mã trạng thái
-	            break;
+	    String message = null;
+	    
+	    if (statusCode.value() == 404) {
+	        message = "Order ID not found";
+	    } else if (statusCode.value() == 400) {
+	        message = "Bad Request to PayPal Checkout API";
+	    } else if (statusCode.value() == 500) {
+	        message = "PayPal server error";
+	    } else {
+	        message = "PayPal returned non-OK status code";
 	    }
-		
-		throw new PayPalApiException(message);
+	    
+	    throw new PayPalApiException(message);
 	}
 }

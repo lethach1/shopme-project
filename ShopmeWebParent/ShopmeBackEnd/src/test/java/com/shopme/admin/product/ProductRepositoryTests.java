@@ -34,16 +34,16 @@ public class ProductRepositoryTests {
 		Category category = entityManager.find(Category.class, 5);
 		
 		Product product = new Product();
-		product.setName("Samsung galaxy A31");
-		product.setAlias("sam sung mobile");
-		product.setShortDescription("Short description for Sam Sung");
-		product.setFullDescription("Full description for Sam Sung");
+		product.setName("Acer Aspire Desktop");
+		product.setAlias("acer_aspire_desktop");
+		product.setShortDescription("Short description for Acer Aspire");
+		product.setFullDescription("Full description for Acer Aspire");
 		
 		product.setBrand(brand);
 		product.setCategory(category);
 		
-		product.setPrice(456);
-		product.setCost(333);
+		product.setPrice(678);
+		product.setCost(600);
 		product.setEnabled(true);
 		product.setInStock(true);
 		
@@ -123,4 +123,9 @@ public class ProductRepositoryTests {
 		assertThat(savedProduct.getDetails()).isNotEmpty();		
 	}
 	
+	@Test
+	public void testUpdateReviewCountAndAverageRating() {
+		Integer productId = 100;
+		repo.updateReviewCountAndAverageRating(productId);
+	}
 }

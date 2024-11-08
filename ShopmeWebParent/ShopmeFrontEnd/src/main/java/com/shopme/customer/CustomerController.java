@@ -3,7 +3,9 @@ package com.shopme.customer;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -24,10 +26,6 @@ import com.shopme.security.CustomerUserDetails;
 import com.shopme.security.oauth.CustomerOAuth2User;
 import com.shopme.setting.EmailSettingBag;
 import com.shopme.setting.SettingService;
-
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class CustomerController {
@@ -104,8 +102,6 @@ public class CustomerController {
 		
 		return "customer/account_form";
 	}
-	
-	
 	
 	@PostMapping("/update_account_details")
 	public String updateAccountDetails(Model model, Customer customer, RedirectAttributes ra,

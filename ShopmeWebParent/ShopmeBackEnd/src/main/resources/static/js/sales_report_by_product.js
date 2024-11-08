@@ -3,19 +3,19 @@ var data;
 var chartOptions;
 
 $(document).ready(function() {
-	setupButtonEventHandlers("_product", loadSalesReportByDateForProduct);
+	setupButtonEventHandlers("_product", loadSalesReportByDateForProduct);	
 });
 
 function loadSalesReportByDateForProduct(period) {
 	if (period == "custom") {
 		startDate = $("#startDate_product").val();
 		endDate = $("#endDate_product").val();
-
+		
 		requestURL = contextPath + "reports/product/" + startDate + "/" + endDate;
 	} else {
-		requestURL = contextPath + "reports/product/" + period;
+		requestURL = contextPath + "reports/product/" + period;		
 	}
-
+	
 	$.get(requestURL, function(responseJSON) {
 		prepareChartDataForSalesReportByProduct(responseJSON);
 		customizeChartForSalesReportByProduct();
@@ -31,11 +31,11 @@ function prepareChartDataForSalesReportByProduct(responseJSON) {
 	data.addColumn('number', 'Quantity');
 	data.addColumn('number', 'Gross Sales');
 	data.addColumn('number', 'Net Sales');
-
+	
 	totalGrossSales = 0.0;
 	totalNetSales = 0.0;
 	totalItems = 0;
-
+	
 	$.each(responseJSON, function(index, reportItem) {
 		data.addRows([[reportItem.identifier, reportItem.productsCount, reportItem.grossSales, reportItem.netSales]]);
 		totalGrossSales += parseFloat(reportItem.grossSales);

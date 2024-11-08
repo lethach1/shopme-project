@@ -2,6 +2,7 @@ package com.shopme.shoppingcart;
 
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,6 @@ import com.shopme.common.entity.CartItem;
 import com.shopme.common.entity.Customer;
 import com.shopme.common.entity.ShippingRate;
 import com.shopme.shipping.ShippingRateService;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class ShoppingCartController {

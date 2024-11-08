@@ -7,7 +7,7 @@ $(document).ready(function() {
 function addToCart() {
 	quantity = $("#quantity" + productId).val();
 	url = contextPath + "cart/add/" + productId + "/" + quantity;
-
+	
 	$.ajax({
 		type: "POST",
 		url: url,

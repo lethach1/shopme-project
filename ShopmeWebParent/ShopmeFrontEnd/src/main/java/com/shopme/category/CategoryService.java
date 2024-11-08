@@ -15,7 +15,6 @@ public class CategoryService {
 
 	@Autowired private CategoryRepository repo;
 	
-//	Sử dụng ở homepage hiển thị toàn bọ list Category nhánh cuối (category cấp 3)
 	public List<Category> listNoChildrenCategories() {
 		List<Category> listNoChildrenCategories = new ArrayList<>();
 		
@@ -31,7 +30,6 @@ public class CategoryService {
 		return listNoChildrenCategories;
 	}
 	
-	
 	public Category getCategory(String alias) throws CategoryNotFoundException {
 		Category category = repo.findByAliasEnabled(alias);
 		if (category == null) {
@@ -41,7 +39,6 @@ public class CategoryService {
 		return category;
 	}
 	
-//	list parent để hiển thị lên breadscrumb
 	public List<Category> getCategoryParents(Category child) {
 		List<Category> listParents = new ArrayList<>();
 		

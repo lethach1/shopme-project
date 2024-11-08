@@ -2,6 +2,9 @@ package com.shopme.security.oauth;
 
 import java.io.IOException;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,10 +14,6 @@ import org.springframework.stereotype.Component;
 import com.shopme.common.entity.AuthenticationType;
 import com.shopme.common.entity.Customer;
 import com.shopme.customer.CustomerService;
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {

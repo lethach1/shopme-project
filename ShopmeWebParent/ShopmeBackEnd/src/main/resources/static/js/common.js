@@ -3,7 +3,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		document.logoutForm.submit();
 	});
-
+	
 	customizeDropDownMenu();
 	customizeTabs();
 });
@@ -17,7 +17,7 @@ function customizeDropDownMenu() {
 			$(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp();
 		}
 	);
-
+	
 	$(".dropdown > a").click(function() {
 		location.href = this.href;
 	});
@@ -27,11 +27,11 @@ function customizeTabs() {
 	// Javascript to enable link to tab
 	var url = document.location.toString();
 	if (url.match('#')) {
-		$('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
-	}
+	    $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+	} 
 
 	// Change hash for page-reload
-	$('.nav-tabs a').on('shown.bs.tab', function(e) {
-		window.location.hash = e.target.hash;
-	})
+	$('.nav-tabs a').on('shown.bs.tab', function (e) {
+	    window.location.hash = e.target.hash;
+	})	
 }

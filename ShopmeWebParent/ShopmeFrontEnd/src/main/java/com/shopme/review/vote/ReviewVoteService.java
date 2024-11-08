@@ -3,6 +3,7 @@ package com.shopme.review.vote;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,8 @@ import com.shopme.common.entity.Customer;
 import com.shopme.common.entity.Review;
 import com.shopme.common.entity.ReviewVote;
 import com.shopme.review.ReviewRepository;
-
-import jakarta.transaction.Transactional;
+import com.shopme.vote.VoteResult;
+import com.shopme.vote.VoteType;
 
 @Service
 @Transactional

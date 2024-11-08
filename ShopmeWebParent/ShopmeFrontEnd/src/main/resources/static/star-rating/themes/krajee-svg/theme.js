@@ -10,21 +10,21 @@
  *
  * Licensed under the BSD 3-Clause
  * https://github.com/kartik-v/bootstrap-star-rating/blob/master/LICENSE.md
- */
-(function(factory) {
-	'use strict';
-	if (typeof define === 'function' && define.amd) {
-		define(['jquery'], factory);
-	} else if (typeof module === 'object' && typeof module.exports === 'object') {
-		factory(require('jquery'));
-	} else {
-		factory(window.jQuery);
-	}
-}(function($) {
-	"use strict";
-	$.fn.ratingThemes['krajee-svg'] = {
-		filledStar: '<span class="krajee-icon krajee-icon-star"></span>',
-		emptyStar: '<span class="krajee-icon krajee-icon-star"></span>',
-		clearButton: '<span class="krajee-icon-clear"></span>'
-	};
+ */  
+(function (factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && typeof module.exports === 'object') { 
+        factory(require('jquery'));
+    } else { 
+        factory(window.jQuery);
+    }
+}(function ($) {
+    "use strict";
+    $.fn.ratingThemes['krajee-svg'] = {
+        filledStar: '<span class="krajee-icon krajee-icon-star"></span>',
+        emptyStar: '<span class="krajee-icon krajee-icon-star"></span>',
+        clearButton: '<span class="krajee-icon-clear"></span>'
+    };
 }));

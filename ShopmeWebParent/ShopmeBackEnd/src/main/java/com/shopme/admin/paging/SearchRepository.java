@@ -10,3 +10,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface SearchRepository<T, ID> extends JpaRepository<T, ID> {
 	public Page<T> findAll(String keyword, Pageable pageable);
 }
+
+//định nghĩa một repository tìm kiếm cho dễ bảo trì khi cần cập nhật logic tìm kiếm

@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	formatRatingNumber();
 });
-
+	
 $(".product-detail-rating-star").rating({
 	displayOnly: true,
 	hoverOnClear: false,

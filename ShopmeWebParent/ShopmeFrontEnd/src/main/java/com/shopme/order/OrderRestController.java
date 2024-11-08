@@ -1,5 +1,6 @@
 package com.shopme.order;
 
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,8 +14,6 @@ import com.shopme.common.entity.Customer;
 import com.shopme.common.exception.CustomerNotFoundException;
 import com.shopme.common.exception.OrderNotFoundException;
 import com.shopme.customer.CustomerService;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 public class OrderRestController {

@@ -2,6 +2,7 @@ package com.shopme.review;
 
 import java.util.Date;
 
+import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,8 +18,6 @@ import com.shopme.common.entity.product.Product;
 import com.shopme.common.exception.ReviewNotFoundException;
 import com.shopme.order.OrderDetailRepository;
 import com.shopme.product.ProductRepository;
-
-import jakarta.transaction.Transactional;
 
 @Service
 @Transactional

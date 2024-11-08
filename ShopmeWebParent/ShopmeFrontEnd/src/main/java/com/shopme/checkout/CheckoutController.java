@@ -5,6 +5,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -32,10 +35,6 @@ import com.shopme.setting.PaymentSettingBag;
 import com.shopme.setting.SettingService;
 import com.shopme.shipping.ShippingRateService;
 import com.shopme.shoppingcart.ShoppingCartService;
-
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class CheckoutController {

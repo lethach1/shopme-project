@@ -22,6 +22,7 @@ public class CategoryServiceTests {
 	@InjectMocks
 	private CategoryService service;
 	
+	@Test
 	public void testCheckUniqueInNewModeReturnDuplicateName() {
 		Integer id = null;
 		String name = "Computers";

@@ -2,7 +2,9 @@ package com.shopme.security;
 
 import java.io.IOException;
 
-
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,18 +15,10 @@ import com.shopme.common.entity.AuthenticationType;
 import com.shopme.common.entity.Customer;
 import com.shopme.customer.CustomerService;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 @Component
 public class DatabaseLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 	
-	private final CustomerService customerService;
-	
-	public DatabaseLoginSuccessHandler(CustomerService customerService) {
-		this.customerService = customerService;
-	}
+	@Autowired private CustomerService customerService;
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

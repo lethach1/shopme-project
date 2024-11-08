@@ -2,6 +2,8 @@ package com.shopme.review;
 
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -19,8 +21,6 @@ import com.shopme.common.exception.ProductNotFoundException;
 import com.shopme.common.exception.ReviewNotFoundException;
 import com.shopme.product.ProductService;
 import com.shopme.review.vote.ReviewVoteService;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class ReviewController {

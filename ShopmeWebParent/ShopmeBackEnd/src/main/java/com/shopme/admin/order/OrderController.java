@@ -51,7 +51,7 @@ public class OrderController {
 			@AuthenticationPrincipal ShopmeUserDetails loggedUser) {
 
 		orderService.listByPage(pageNum, helper);
-		loadCurrencySetting(request);
+		loadCurrencySetting(request); 
 
 		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Salesperson") && loggedUser.hasRole("Shipper")) {
 			return "orders/orders_shipper";
