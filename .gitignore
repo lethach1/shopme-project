@@ -1,0 +1,20 @@
+# Thư mục build và target (Java, Maven, Gradle)
+/target/
+/build/
+
+# Thư mục của IDE (IntelliJ IDEA, Eclipse, VSCode)
+/.idea/
+/.vscode/
+
+# Tệp cấu hình nhạy cảm
+*.yml
+*.env
+
+
+# Các tệp log, tệp tạm thời
+*.log
+*.tmp
+
+# Các tệp hệ thống (macOS, Windows)
+.DS_Store
+Thumbs.db
