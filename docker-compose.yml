@@ -1,0 +1,61 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: shopme-mysql
+    environment:
+      MYSQL_DATABASE: shopmedb
+      MYSQL_ROOT_PASSWORD: 12345
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./shopmedb_dump.sql:/docker-entrypoint-initdb.d/shopmedb_dump.sql  # Ánh xạ file dump vào thư mục init của MySQL
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  shopme-backend:
+    build:
+      context: ./ShopmeWebParent/ShopmeBackEnd
+      dockerfile: Dockerfile
+    container_name: shopme-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SERVER_SERVLET_CONTEXT_PATH: /ShopmeAdmin  
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/shopmedb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 12345
+      AWS_S3_ENDPOINT: https://shopme-filesdir.s3.ap-southeast-1.amazonaws.com
+      AWS_BUCKET_NAME: shopme-filesdir
+      AWS_REGION: ap-southeast-1
+      AWS_ACCESS_KEY_ID: AKIA45Y2RV2V5BPD4W56
+      AWS_SECRET_ACCESS_KEY: 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
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  shopme-frontend:
+    build:
+      context: ./ShopmeWebParent/ShopmeFrontEnd
+      dockerfile: Dockerfile
+    container_name: shopme-frontend
+    ports:
+      - "80:80"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/shopmedb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 12345
+      AWS_S3_ENDPOINT: https://shopme-filesdir.s3.ap-southeast-1.amazonaws.com
+      AWS_BUCKET_NAME: shopme-filesdir
+      AWS_REGION: ap-southeast-1
+      AWS_ACCESS_KEY_ID: AKIA45Y2RV2V5BPD4W56
+      AWS_SECRET_ACCESS_KEY: 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
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql-data:
